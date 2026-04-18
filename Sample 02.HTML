@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Happy Birthday! 🎂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Navigation */
+       /* MOBILE NAVIGATION - Top Fixed Bar */
+        nav {
+            position: fixed;
+            top: 20px;
+            left: 50px;
+            right: 50px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            /* padding:  15px 10px; */
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+            gap: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* min-width: 60px; */
+        }
+
+        nav a:hover,
+        nav a.active {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            transform: scale(0.80);
+        }
+
+        nav a span.icon {
+            font-size: 20px;
+            margin-bottom: 2px;
+        }
+
+        /* Page 1 - Welcome */
+        .page1 {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .welcome-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        .welcome-content p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .cake {
+            font-size: 8rem;
+            animation: wiggle 2s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            75% { transform: rotate(-5deg); }
+        }
+
+        /* Page 2 - Message */
+        .page2 {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+
+        .message-card {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 30px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            animation: slideUp 1s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .message-card h2 {
+            font-size: 2.5rem;
+            color: #ff6b6b;
+            margin-bottom: 30px;
+        }
+
+        .message-card p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Page 3 - Memories */
+        .page3 {
+            padding: 120px 0 80px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .memories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .memory-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .memory-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        /* Page 4 - Wishes */
+        .page4 {
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .wish-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .wish {
+            background: rgba(255,255,255,0.95);
+            padding: 30px;
+            margin: 30px 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+        }
+
+        .wish:nth-child(1) { animation-delay: 0.2s; }
+        .wish:nth-child(2) { animation-delay: 0.4s; }
+        .wish:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wish h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Page 5 - Celebration */
+        .page5 {
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .celebration-content {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            padding: 60px;
+            border-radius: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .countdown {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin: 30px 0;
+            font-weight: bold;
+        }
+
+        /* Hide pages */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .welcome-content h1 { font-size: 2.5rem; }
+            .cake { font-size: 5rem; }
+            nav ul { gap: 15px; }
+            nav a { font-size: 14px; padding: 8px 15px; }
+        }
+
+        /* Floating particles */
+        .particle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="showPage('page1')">🏠 Home</a></li>
+            <li><a href="#" onclick="showPage('page2')">💌 Message</a></li>
+            <li><a href="#" onclick="showPage('page3')">📸 Memories</a></li>
+            <li><a href="#" onclick="showPage('page4')">🌟 Wishes</a></li>
+            <li><a href="#" onclick="showPage('page5')">🎊 Celebrate</a></li>
+        </ul>
+    </nav>
+
+    <!-- Page 1: Welcome -->
+    <div id="page1" class="page active">
+        <div class="container">
+            <div class="page1">
+                <div class="welcome-content">
+                    <h1>🎉 HAPPY BIRTHDAY! 🎉</h1>
+                    <div class="cake">🎂</div>
+                    <p>Click navigation to explore your special day!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Birthday Message -->
+    <div id="page2" class="page">
+        <div class="container">
+            <div class="page2">
+                <div class="message-card">
+                    <h2>💖 Special Birthday Message 💖</h2>
+                    <p>Today is all about celebrating YOU! Your smile lights up our world, your laughter is contagious, and your heart is pure gold. May this year bring you endless joy, success, and beautiful surprises!</p>
+                    <p><strong>You are loved more than words can express! 🌟</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 3: Memories -->
+    <div id="page3" class="page">
+        <div class="container">
+            <div style="text-align: center; color: white; margin-bottom: 50px;">
+                <h2 style="font-size: 3rem;">📸 Cherished Memories 📸</h2>
+            </div>
+            <div class="memories-grid">
+                <div class="memory-card">
+                    <div class="memory-icon">🎈</div>
+                    <h3>First Adventure Together</h3>
+                    <p>That day we explored the city and laughed till our stomachs hurt!</p>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">🎉</div>
+                    <h3>Best Party Ever</h3>
+                    <p>Your epic dance moves stole the show!</p>
+                </div>
+                <div class="memory-card">
+                    <div class="memory-icon">🌟</div>
+                    <h3>Late Night Talks</h3>
+                    <p>Those heart-to-heart conversations we cherish forever.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 4: Birthday Wishes -->
+    <div id="page4" class="page">
+        <div class="container">
+            <div class="page4">
+                <div class="wish-container">
+                    <h2 style="color: white; font-size: 2.5rem; margin-bottom: 40px;">✨ Birthday Wishes ✨</h2>
+                    
+                    <div class="wish">
+                        <h3>🎂 Health & Happiness</h3>
+                        <p>May your days be filled with good health, endless happiness, and sweet moments!</p>
+                    </div>
+                    
+                    <div class="wish">
+                        <h3>🌟 Success & Growth</h3>
+                        <p>Wishing you tremendous success in all your dreams and personal growth!</p>
+                    </div>
+                    
+                    <div class="wish">
+                        <h3>💕 Love & Laughter</h3>
+                        <p>May love surround you and laughter fill every moment of your life!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 5: Celebration -->
+    <div id="page5" class="page">
+        <div class="container">
+            <div class="page5">
+                <div class="celebration-content">
+                    <h2 style="font-size: 3rem; color: #ff6b6b;">🥳 LET'S CELEBRATE! 🥳</h2>
+                    <div class="countdown" id="countdown">3</div>
+                    <p style="font-size: 1.5rem; color: #333; margin: 30px 0;">
+                        Here's to another year of amazing you! 
+                        <br><strong>🎈 Happy Birthday! 🎈</strong>
+                    </p>
+                    <div style="font-size: 4rem; margin: 30px 0;">🎊🎉🎂🎁🎈</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            
+            // Add floating particles
+            createParticles();
+            
+            // Celebration countdown
+            if (pageId === 'page5') {
+                runCountdown();
+            }
+        }
+
+        // Floating particles effect
+        function createParticles() {
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.style.left = Math.random() * 100 + '%';
+                    particle.style.width = particle.style.height = (Math.random() * 6 + 2) + 'px';
+                    particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 6000);
+                }, i * 100);
+            }
+        }
+
+        // Celebration countdown
+        function runCountdown() {
+            const countdownEl = document.getElementById('countdown');
+            let count = 3;
+            
+            const countdownInterval = setInterval(() => {
+                countdownEl.textContent = count;
+                count--;
+                
+                if (count < 0) {
+                    clearInterval(countdownInterval);
+                    countdownEl.textContent = '🎉 HAPPY BIRTHDAY! 🎉';
+                }
+            }, 800);
+        }
+
+        // Auto-create particles on load
+        window.addEventListener('load', createParticles);
+    </script>
+</body>
+</html>
